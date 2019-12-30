@@ -13,12 +13,13 @@ class Program
         {
             context.Items["Greetings"] = "Hello world";
             context.Items["Path"] = context.Request.Path;
+            context.Items["Endpoint"] = context.GetEndpoint().ToString();
             await next.Invoke();
         });
         
-        app.Use(async (context, next) =>
+        app.MapFallback(async (context) =>
         {
-            await context.Response.WriteAsync($"{context.Items["Greetings"]} for {context.Items["Path"]}");
+            await context.Response.WriteAsync($"{context.Items["Greetings"]} for path {context.Items["Path"]} at endpoint { context.Items["Endpoint"] }");
         });
 
         await app.RunAsync();

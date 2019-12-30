@@ -9,11 +9,10 @@ class Program
     {
         var builder = WebApplicationHost.CreateDefaultBuilder(args);
         var app = builder.Build();
-        app.UseRouting();
         app.Use(async (context, next) => 
         {
             context.Items["Greetings"] = "Hello world";
-            context.Items["Path"] = context.GetEndpoint().ToString();
+            context.Items["Path"] = context.Request.Path;
             await next.Invoke();
         });
         

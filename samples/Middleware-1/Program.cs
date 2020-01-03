@@ -8,6 +8,11 @@ class Program
     static async Task Main(string[] args)
     {
         var builder = WebApplicationHost.CreateDefaultBuilder(args);
+        builder.ConfigureLogging( builder =>
+        {
+            builder.
+        });
+        
         var app = builder.Build();
         app.Use(async (context, next) => 
         {

@@ -7,7 +7,7 @@ class Program
 {
     static async Task Main(string[] args)
     {
-        var builder = WebApplicationHost.CreateDefaultBuilder(args);
+        var builder = WebApplication.CreateBuilder(args);
         builder.Services.AddRazorPages();
 
         var app = builder.Build();

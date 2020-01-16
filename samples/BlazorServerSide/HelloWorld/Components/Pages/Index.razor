@@ -1,0 +1,26 @@
+@page "/"
+
+<style>
+    img {
+        cursor: pointer;
+    }
+</style>
+
+@if(Alternating) 
+{
+    <img src="https://source.unsplash.com/TNEmcss1QWU/800x800" @onclick="@Alternate" alt="Feather" />
+}
+else
+{
+    <img src="https://source.unsplash.com/lYMbHxtntRo/800x800" @onclick="@Alternate" alt="Feather" />
+}
+
+@code {
+
+    public bool Alternating { get;set;} = false;
+
+    public void Alternate() 
+    {
+        Alternating = !Alternating;
+    }
+}
